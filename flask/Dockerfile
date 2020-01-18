@@ -6,4 +6,6 @@ ADD . /app
 
 RUN pip install -r requirements.txt
 
+# RUN cat /etc/passwd
+
 CMD [ "uwsgi", "app.ini" ]
