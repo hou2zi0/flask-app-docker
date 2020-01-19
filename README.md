@@ -10,8 +10,10 @@
 * Mehrere Container auf einmal erstellen und hochfahren: `docker-compose up --build`
 
 #### Starten & Stoppen von Cotainern
-* Container hochfahren: `docker run -d -p 5000:5000 image-name`; die Option `-p` mappt einen Port in den Container.
-* Container herunterfahren: `docker stop`
+* Container mit Port-Mapping Host:Guest starten: `docker run -d -p 80:5000 image-name`; die Option `-p` mappt einen Port in den Container.
+* Container mit Portm-Mapping Host:Guest und gesetzter Environment-Variable (für WSGI) starten: `docker run -d -p 80:5000 -e PORT=5000 image-name`; `-e PORT=5000` belegt die Variable `PORT` in der uWSGI-ini-Datei (`app.ini`) mit dem übergeben Wert, e.g. `5000`, der mit dem Host:Guest Port-Mapping korrespondiert. 
+* Container hochfahren: `docker start Container_ID`
+* Container herunterfahren: `docker stop Container_ID`
 
 #### Überblick behalten
 * Alle images auflisten: `docker images`
