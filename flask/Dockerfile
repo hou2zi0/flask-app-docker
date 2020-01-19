@@ -1,11 +1,21 @@
-FROM python:3.7.2-stretch
+FROM alpine:latest
+RUN apk add --no-cache python3-dev && pip3 install --upgrade pip
 
 WORKDIR /app
+COPY . /app
 
-ADD . /app
+#RUN pip3 install -r requirements.txt
 
-RUN pip install -r requirements.txt
+RUN set -e; \
+	apk add --no-cache --virtual .build-deps \
+		gcc \
+		libc-dev \
+		linux-headers \
+	; \
+	pip3 install -r requirements.txt; \
+	apk del .build-deps;
 
-# RUN cat /etc/passwd
+#ENTRYPOINT ["python3"]
+#CMD ["run.py"]
 
 CMD [ "uwsgi", "app.ini" ]
