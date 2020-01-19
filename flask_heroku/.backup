@@ -1,0 +1,27 @@
+# Smaller image for basic Flask application
+# with Alpine Linux (https://alpinelinux.org/)
+
+FROM alpine:latest
+RUN apk add --no-cache python3-dev && pip3 install --upgrade pip
+
+WORKDIR /app
+COPY . /app
+
+#RUN pip3 install -r requirements.txt
+
+# Setup for libs that need a C compiler
+RUN set -e; \
+	apk add --no-cache --virtual .build-deps \
+		gcc \
+		libc-dev \
+		linux-headers \
+	; \
+	pip3 install cython; \
+	pip3 install -r requirements.txt; \
+	python3 -m spacy download en_core_web_sm; \
+	apk del .build-deps;
+
+#ENTRYPOINT ["python3"]
+#CMD ["run.py"]
+
+CMD [ "uwsgi", "app.ini" ]
