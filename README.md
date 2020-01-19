@@ -16,7 +16,7 @@
 * Container herunterfahren: `docker stop Container_ID`
 
 #### Überblick behalten
-* Alle images auflisten: `docker images`
+* Alle images auflisten: `docker images -a`
 * Alle Container auflisten: `docker ps -a`
 
 #### Löschen
@@ -37,6 +37,14 @@
 #### Apps
 * Alle Apps auflisten: `heroku apps`
 * Information zu einzelner App: `heroku apps:info AppName`
+
+## Requests
+
+* JSON: `curl -d '{"text":"I am a pretty monkey!"}' -H "Content-Type: application/json" -X POST http://127.0.0.1/api/adj`
+
+## Troubleshooting
+
+* Start Python with the envs python version: `python -m flask run`, when you encounter problems while loading the libs within the running flask instance.
 
 ## Tutorials
 * [Containerise your Python Flask using Docker and deploy it on Heroku](https://medium.com/@ksashok/containerise-your-python-flask-using-docker-and-deploy-it-onto-heroku-a0b48d025e43)
