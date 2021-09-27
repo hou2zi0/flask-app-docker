@@ -44,8 +44,12 @@
 
 ## Troubleshooting
 
-* Start Python with the envs python version: `python -m flask run`, when you encounter problems while loading the libs within the running flask instance.
+* Starte Python innerhalb einer envs: `python -m flask run`, wenn es Probleme mit den Python-Libraries innerhalb einer laufenden App gibt.
 
 ## Tutorials
 * [Containerise your Python Flask using Docker and deploy it on Heroku](https://medium.com/@ksashok/containerise-your-python-flask-using-docker-and-deploy-it-onto-heroku-a0b48d025e43)
 * [Containerizing Python web apps with Docker, Flask, Nginx & uWSGI](https://www.youtube.com/watch?v=dVEjSmKFUVI)
+
+## ToDo
+
+* Add hot reloading
